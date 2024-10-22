@@ -46,6 +46,7 @@ class _UserCRUDFormWidgetState extends ConsumerState<UserCRUDFormWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[

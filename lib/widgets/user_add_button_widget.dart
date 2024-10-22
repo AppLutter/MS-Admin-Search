@@ -11,8 +11,8 @@ class UserAddButtonWidget extends ConsumerWidget {
       onPressed: () => showDialog(
         context: context,
         builder: (BuildContext context) {
-          return Dialog(
-            child: UserCRUDFormWidget(),
+          return AlertDialog(
+            content: UserCRUDFormWidget(),
           );
         },
       ),
