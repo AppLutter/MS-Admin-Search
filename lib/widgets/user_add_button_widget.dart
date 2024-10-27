@@ -8,13 +8,9 @@ class UserAddButtonWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return TextButton(
-      onPressed: () => showDialog(
+      onPressed: () => showRegistration(
         context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: UserCRUDFormWidget(),
-          );
-        },
+        ref: ref,
       ),
       child: const Text('추가하기'),
     );

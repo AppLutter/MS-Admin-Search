@@ -38,7 +38,7 @@ class Administrators extends _$Administrators {
     Administrator administrator = Administrator(
       name: name,
       teamsAddress: teamsAddress,
-      eamilAddress: eamilAddress,
+      emailAddress: eamilAddress,
     );
     state = [...state, administrator];
 

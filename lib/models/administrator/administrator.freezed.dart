@@ -21,7 +21,7 @@ Administrator _$AdministratorFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Administrator {
   String get name => throw _privateConstructorUsedError;
-  String get eamilAddress => throw _privateConstructorUsedError;
+  String get emailAddress => throw _privateConstructorUsedError;
   String get teamsAddress => throw _privateConstructorUsedError;
 
   /// Serializes this Administrator to a JSON map.
@@ -40,7 +40,7 @@ abstract class $AdministratorCopyWith<$Res> {
           Administrator value, $Res Function(Administrator) then) =
       _$AdministratorCopyWithImpl<$Res, Administrator>;
   @useResult
-  $Res call({String name, String eamilAddress, String teamsAddress});
+  $Res call({String name, String emailAddress, String teamsAddress});
 }
 
 /// @nodoc
@@ -59,7 +59,7 @@ class _$AdministratorCopyWithImpl<$Res, $Val extends Administrator>
   @override
   $Res call({
     Object? name = null,
-    Object? eamilAddress = null,
+    Object? emailAddress = null,
     Object? teamsAddress = null,
   }) {
     return _then(_value.copyWith(
@@ -67,9 +67,9 @@ class _$AdministratorCopyWithImpl<$Res, $Val extends Administrator>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      eamilAddress: null == eamilAddress
-          ? _value.eamilAddress
-          : eamilAddress // ignore: cast_nullable_to_non_nullable
+      emailAddress: null == emailAddress
+          ? _value.emailAddress
+          : emailAddress // ignore: cast_nullable_to_non_nullable
               as String,
       teamsAddress: null == teamsAddress
           ? _value.teamsAddress
@@ -87,7 +87,7 @@ abstract class _$$AdministratorImplCopyWith<$Res>
       __$$AdministratorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String eamilAddress, String teamsAddress});
+  $Res call({String name, String emailAddress, String teamsAddress});
 }
 
 /// @nodoc
@@ -104,7 +104,7 @@ class __$$AdministratorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? eamilAddress = null,
+    Object? emailAddress = null,
     Object? teamsAddress = null,
   }) {
     return _then(_$AdministratorImpl(
@@ -112,9 +112,9 @@ class __$$AdministratorImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      eamilAddress: null == eamilAddress
-          ? _value.eamilAddress
-          : eamilAddress // ignore: cast_nullable_to_non_nullable
+      emailAddress: null == emailAddress
+          ? _value.emailAddress
+          : emailAddress // ignore: cast_nullable_to_non_nullable
               as String,
       teamsAddress: null == teamsAddress
           ? _value.teamsAddress
@@ -129,7 +129,7 @@ class __$$AdministratorImplCopyWithImpl<$Res>
 class _$AdministratorImpl implements _Administrator {
   _$AdministratorImpl(
       {required this.name,
-      required this.eamilAddress,
+      required this.emailAddress,
       required this.teamsAddress});
 
   factory _$AdministratorImpl.fromJson(Map<String, dynamic> json) =>
@@ -138,13 +138,13 @@ class _$AdministratorImpl implements _Administrator {
   @override
   final String name;
   @override
-  final String eamilAddress;
+  final String emailAddress;
   @override
   final String teamsAddress;
 
   @override
   String toString() {
-    return 'Administrator(name: $name, eamilAddress: $eamilAddress, teamsAddress: $teamsAddress)';
+    return 'Administrator(name: $name, emailAddress: $emailAddress, teamsAddress: $teamsAddress)';
   }
 
   @override
@@ -153,8 +153,8 @@ class _$AdministratorImpl implements _Administrator {
         (other.runtimeType == runtimeType &&
             other is _$AdministratorImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.eamilAddress, eamilAddress) ||
-                other.eamilAddress == eamilAddress) &&
+            (identical(other.emailAddress, emailAddress) ||
+                other.emailAddress == emailAddress) &&
             (identical(other.teamsAddress, teamsAddress) ||
                 other.teamsAddress == teamsAddress));
   }
@@ -162,7 +162,7 @@ class _$AdministratorImpl implements _Administrator {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, eamilAddress, teamsAddress);
+      Object.hash(runtimeType, name, emailAddress, teamsAddress);
 
   /// Create a copy of Administrator
   /// with the given fields replaced by the non-null parameter values.
@@ -183,7 +183,7 @@ class _$AdministratorImpl implements _Administrator {
 abstract class _Administrator implements Administrator {
   factory _Administrator(
       {required final String name,
-      required final String eamilAddress,
+      required final String emailAddress,
       required final String teamsAddress}) = _$AdministratorImpl;
 
   factory _Administrator.fromJson(Map<String, dynamic> json) =
@@ -192,7 +192,7 @@ abstract class _Administrator implements Administrator {
   @override
   String get name;
   @override
-  String get eamilAddress;
+  String get emailAddress;
   @override
   String get teamsAddress;
 

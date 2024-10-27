@@ -7,7 +7,7 @@ part 'administrator.g.dart';
 class Administrator with _$Administrator {
   factory Administrator({
     required String name,
-    required String eamilAddress,
+    required String emailAddress,
     required String teamsAddress,
   }) = _Administrator;
 

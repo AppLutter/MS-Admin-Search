@@ -9,13 +9,13 @@ part of 'administrator.dart';
 _$AdministratorImpl _$$AdministratorImplFromJson(Map<String, dynamic> json) =>
     _$AdministratorImpl(
       name: json['name'] as String,
-      eamilAddress: json['eamilAddress'] as String,
+      emailAddress: json['emailAddress'] as String,
       teamsAddress: json['teamsAddress'] as String,
     );
 
 Map<String, dynamic> _$$AdministratorImplToJson(_$AdministratorImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'eamilAddress': instance.eamilAddress,
+      'emailAddress': instance.emailAddress,
       'teamsAddress': instance.teamsAddress,
     };

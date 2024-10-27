@@ -1,36 +1,90 @@
 import 'package:admin_search/functions/functions.dart';
-import 'package:admin_search/riverpods/riverpods.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../models/models.dart';
+import '../riverpods/riverpods.dart';
+
+void showRegistration({
+  required BuildContext context,
+  required WidgetRef ref,
+}) async {
+  final Administrator? result = await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return const AlertDialog(
+        content: UserCRUDFormWidget(),
+      );
+    },
+  );
+
+  if (result == null) {
+    return;
+  }
+
+  ref.read(administratorsProvider.notifier).addAdmin(
+        name: result.name,
+        teamsAddress: result.teamsAddress,
+        eamilAddress: result.emailAddress,
+      );
+}
+
+void showUpdate({
+  required BuildContext context,
+  required String name,
+  required String emailAddress,
+  required String teamsAddress,
+}) async {
+  final Administrator? result = await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        content: UserCRUDFormWidget(
+          name: name,
+          emailAddress: emailAddress,
+          teamsAddress: teamsAddress,
+        ),
+      );
+    },
+  );
+}
+
 class UserCRUDFormWidget extends ConsumerStatefulWidget {
-  const UserCRUDFormWidget({super.key});
+  const UserCRUDFormWidget({
+    super.key,
+    this.name,
+    this.emailAddress,
+    this.teamsAddress,
+  });
+
+  final String? name;
+  final String? emailAddress;
+  final String? teamsAddress;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _UserCRUDFormWidgetState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _UserCRUDFormWidgetState();
 }
 
 class _UserCRUDFormWidgetState extends ConsumerState<UserCRUDFormWidget> {
   late TextEditingController name;
-  late TextEditingController email;
-  late TextEditingController url;
+  late TextEditingController emailAddress;
+  late TextEditingController teamsAddress;
 
   late FunctionChecks functionChecks;
 
-  bool checkSatisfationToRegist() {
+  bool checkSatisfactionForRegistration() {
     return !functionChecks.checkIfEmpty(name.text) &&
-        !functionChecks.checkIfEmpty(email.text) &&
-        !functionChecks.checkIfEmpty(url.text);
+        !functionChecks.checkIfEmpty(emailAddress.text) &&
+        !functionChecks.checkIfEmpty(teamsAddress.text);
   }
 
   @override
   void initState() {
     functionChecks = FunctionChecks();
 
-    name = TextEditingController();
-    email = TextEditingController();
-    url = TextEditingController();
+    name = TextEditingController(text: widget.name);
+    emailAddress = TextEditingController(text: widget.emailAddress);
+    teamsAddress = TextEditingController(text: widget.teamsAddress);
 
     super.initState();
   }
@@ -38,8 +92,8 @@ class _UserCRUDFormWidgetState extends ConsumerState<UserCRUDFormWidget> {
   @override
   void dispose() {
     name.dispose();
-    email.dispose();
-    url.dispose();
+    emailAddress.dispose();
+    teamsAddress.dispose();
     super.dispose();
   }
 
@@ -51,23 +105,26 @@ class _UserCRUDFormWidgetState extends ConsumerState<UserCRUDFormWidget> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         RowTextField(title: "이름", controller: name),
-        RowTextField(title: "Email", controller: email),
-        RowTextField(title: "Teams 링크", controller: url),
+        RowTextField(title: "Email", controller: emailAddress),
+        RowTextField(title: "Teams 링크", controller: teamsAddress),
         const SizedBox(height: 30),
         ElevatedButton(
           onPressed: () {
-            if (checkSatisfationToRegist()) {
-              ref.read(administratorsProvider.notifier).addAdmin(
-                    name: name.text,
-                    teamsAddress: url.text,
-                    eamilAddress: email.text,
-                  );
-
-              name.clear();
-              email.clear();
-              url.clear();
-              Navigator.pop(context);
+            if (!checkSatisfactionForRegistration()) {
+              return;
             }
+
+            final Administrator administrator = Administrator(
+              name: name.text,
+              teamsAddress: teamsAddress.text,
+              emailAddress: emailAddress.text,
+            );
+
+            name.clear();
+            emailAddress.clear();
+            teamsAddress.clear();
+
+            Navigator.pop(context, administrator);
           },
           child: const Text("추가"),
         )

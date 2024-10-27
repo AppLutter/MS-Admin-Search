@@ -7,8 +7,7 @@ class UserListOutlinePage extends ConsumerStatefulWidget {
   const UserListOutlinePage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _UserListOutlinePageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _UserListOutlinePageState();
 }
 
 class _UserListOutlinePageState extends ConsumerState<UserListOutlinePage> {
@@ -51,11 +50,26 @@ class _UserListOutlinePageState extends ConsumerState<UserListOutlinePage> {
               child: Wrap(
                 children: List.generate(
                   adminProvider.length,
-                  (index) => RegisteredUserWidget(
-                    name: adminProvider[index].name,
-                    emailAddress: adminProvider[index].eamilAddress,
-                    teamsAddress: adminProvider[index].teamsAddress,
-                  ),
+                  (index) {
+                    String name = adminProvider[index].name;
+                    String emailAddress = adminProvider[index].emailAddress;
+                    String teamsAddress = adminProvider[index].teamsAddress;
+                    return GestureDetector(
+                      onTap: () {
+                        showUpdate(
+                          context: context,
+                          name: name,
+                          emailAddress: emailAddress,
+                          teamsAddress: teamsAddress,
+                        );
+                      },
+                      child: RegisteredUserWidget(
+                        name: name,
+                        emailAddress: emailAddress,
+                        teamsAddress: teamsAddress,
+                      ),
+                    );
+                  },
                 ),
               ),
             );
